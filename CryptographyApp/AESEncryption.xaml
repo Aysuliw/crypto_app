@@ -1,0 +1,97 @@
+﻿<UserControl x:Class="CryptographyApp.AESEncryption"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CryptographyApp"
+             mc:Ignorable="d" 
+             d:DesignHeight="2000" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style x:Key="ContentCenter" TargetType="{x:Type DataGridCell}">
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="DataGridCell">
+                        <Border  BorderThickness="0">
+                            <Border x:Name="border"
+                              BorderBrush="Black"
+                              BorderThickness="2"
+                              Background="Orange"
+                                    
+                              CornerRadius="3">
+                                <ContentPresenter VerticalAlignment="Center"/>
+                            </Border>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsSelected}" Value="true">
+                                <Setter TargetName="border" Property="Background" Value="Orange"/>
+                            </DataTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Width" Value="50"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="FontWeight" Value="800"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontFamily" Value="Courier New"/>
+            <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+        </Style>
+    </UserControl.Resources>
+    <Grid Background="White">
+        <StackPanel>
+            <TextBlock  Text="Kiritilgen teksttin' on altiliq ko'rinisi:" FontFamily="Comic Sans MS" FontSize="16" HorizontalAlignment="Center" />
+            <DataGrid x:Name="hexTextGrid"  HeadersVisibility="None" HorizontalAlignment="Center" CellStyle="{StaticResource ContentCenter}">
+
+            </DataGrid>
+            <TextBlock  Text="Kiritilgen gilttin' on altiliq ko'rinisi:" FontFamily="Comic Sans MS" FontSize="16" HorizontalAlignment="Center"  />
+            <DataGrid x:Name="hexKeyGrid"  HeadersVisibility="None" CellStyle="{StaticResource ContentCenter}" HorizontalAlignment="Center"/>
+            <!--<Button x:Name="keyGenerationButton" Content="Giltlerdi jaratiw" Margin="223,0,228,0" Height="44" HorizontalAlignment="Center" FontSize="18" Click="keyGenerationButton_Click"/>-->
+            
+            <TextBlock Text="AddRound Key (0-raund)" TextAlignment="Center" FontFamily="Comic Sans MS" FontSize="16"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <DataGrid x:Name="entrystate0Grid"  HeadersVisibility="None" Margin="30,0,30,0" CellStyle="{StaticResource ContentCenter}" HorizontalAlignment="Center"/>
+                <Image Source="D:/Project/CryptographyApp/Images/xor.png" VerticalAlignment="Center" Width="30"/>
+                <DataGrid x:Name="key0Grid"  HeadersVisibility="None" CellStyle="{StaticResource ContentCenter}" HorizontalAlignment="Center" Margin="30,0,30,0"/>
+                <Image Source="D:/Project/CryptographyApp/Images/equal.png" VerticalAlignment="Center" Width="30"/>
+                <DataGrid x:Name="finalstate0Grid"  HeadersVisibility="None" Margin="30,0,30,0" CellStyle="{StaticResource ContentCenter}" HorizontalAlignment="Center"/>
+            </StackPanel>
+            <TextBlock Text="Raund" FontFamily="Comic Sans MS" FontSize="16"  TextAlignment="Center"/>
+            <TextBlock Text="SubByte()&#x0a;Arnawli berilgen 16x16 o'lshemli S-Box tiykarinda baytlardi almastiriw " FontFamily="Comic Sans MS" FontSize="16"  TextAlignment="Center"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <DataGrid x:Name="subByteGrid"  HeadersVisibility="None" Margin="30,0,30,0" CellStyle="{StaticResource ContentCenter}" HorizontalAlignment="Center"/>
+                <Image Source="D:/Project/CryptographyApp/Images/right-arrow.png" VerticalAlignment="Center" Width="30"/>
+                <DataGrid x:Name="resultSubByteGrid"  HeadersVisibility="None" CellStyle="{StaticResource ContentCenter}" HorizontalAlignment="Center" Margin="30,0,30,0"/>
+            </StackPanel>
+            <TextBlock Text="ShiftRow()&#x0a;Har bir qatar o'z qatar nomerine ten' mug'darda ciklliq jiljitiladi" FontFamily="Comic Sans MS" FontSize="16"  TextAlignment="Center"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <DataGrid x:Name="shiftRowGrid"  HeadersVisibility="None" Margin="30,0,30,0" CellStyle="{StaticResource ContentCenter}" HorizontalAlignment="Center"/>
+                <Image Source="D:/Project/CryptographyApp/Images/right-arrow.png" VerticalAlignment="Center" Width="30"/>
+                <DataGrid x:Name="resultShiftRowGrid"  HeadersVisibility="None" CellStyle="{StaticResource ContentCenter}" HorizontalAlignment="Center" Margin="30,0,30,0"/>
+            </StackPanel>
+            <TextBlock Text="MixColumns()&#x0a;Bag'ana elementlerin aralastiriw" FontFamily="Comic Sans MS" FontSize="16"  TextAlignment="Center"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <DataGrid x:Name="mixColumnGrid"  HeadersVisibility="None" Margin="30,0,30,0" CellStyle="{StaticResource ContentCenter}" HorizontalAlignment="Center"/>
+                <Image Source="D:/Project/CryptographyApp/Images/right-arrow.png" VerticalAlignment="Center" Width="30"/>
+                <DataGrid x:Name="resultMixColumnGrid"  HeadersVisibility="None" CellStyle="{StaticResource ContentCenter}" HorizontalAlignment="Center" Margin="30,0,30,0"/>
+            </StackPanel>
+            <TextBlock Text="AddRound Key" FontFamily="Comic Sans MS" FontSize="16"  TextAlignment="Center"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <DataGrid x:Name="entrystateGrid"  HeadersVisibility="None" Margin="30,0,30,0" CellStyle="{StaticResource ContentCenter}" HorizontalAlignment="Center"/>
+                <Image Source="D:/Project/CryptographyApp/Images/xor.png" VerticalAlignment="Center" Width="30"/>
+                <DataGrid x:Name="keyGrid"  HeadersVisibility="None" CellStyle="{StaticResource ContentCenter}" HorizontalAlignment="Center" Margin="30,0,30,0"/>
+                <Image Source="D:/Project/CryptographyApp/Images/equal.png" VerticalAlignment="Center" Width="30"/>
+                <DataGrid x:Name="finalstateGrid"  HeadersVisibility="None" Margin="30,0,30,0" CellStyle="{StaticResource ContentCenter}" HorizontalAlignment="Center"/>
+            </StackPanel>
+
+            <Grid Margin="0 30 0 10 " >
+                <Button Content="Baslaw" Width="150" x:Name="beginButton" Click="beginButton_Click" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                <Button Content="Dawam etiw" Margin="521,0,79,0" x:Name="nextButton" Click="nextButton_Click" VerticalAlignment="Center" HorizontalAlignment="Center" Width="150"/>
+                <Button Content="Izge qaytiw" Margin="84,0,516,0" x:Name="backButton" Click="backButton_Click" VerticalAlignment="Center" HorizontalAlignment="Center" Width="150"/>
+            </Grid>
+            <Button x:Name="finalResultButton" Content="Natiyjeni koriw" Width="200" Click="finalResultButton_Click"/>
+            <TextBlock Text="Na'tiyje" FontFamily="Comic Sans MS" FontSize="16"  TextAlignment="Center"/>
+            <TextBlock x:Name="result" FontFamily="Comic Sans MS" FontSize="18"  TextAlignment="Center"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

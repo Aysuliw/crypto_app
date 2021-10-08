@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="CryptographyApp.asymmetricControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CryptographyApp"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="555">
+    <Grid Background="White">
+        <TextBlock Foreground="#673ab7" Text="Asimmetriyaliq algoritmler" FontSize="32" FontFamily="Comic Sans MS" Margin="61,31,47,312" TextAlignment="Center"/>
+        <TextBlock Text="Shifrlaw usillarinin' simmetriyaliq ha'm assimetriyaliq usillari bar bolip, asimmetriyaliq shifrlawda shifrlaw ha'm deshifrlaw ushin ashiq ha'm jabiq giltlerden paydalaniladi." TextWrapping="Wrap" TextAlignment="Center" FontSize="16" FontFamily="Comic Sans MS" Margin="45,115,47,206"/>
+        <Button x:Name="DiffieHellman" Style="{DynamicResource MaterialDesignRaisedButton}"
+                materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                Content="Diffi-Xellman" Margin="315,243,47,87" Height="Auto" FontSize="20" Click="DiffieHellman_Click"/>
+        <Button x:Name="RSAButton" Style="{DynamicResource MaterialDesignRaisedButton}"
+                materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                Content="RSA" Margin="45,243,306,87" Height="Auto" FontSize="20" Click="RSAButton_Click"/>
+        
+    </Grid>
+</UserControl>

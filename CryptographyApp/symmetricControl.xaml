@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="CryptographyApp.symmetricControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CryptographyApp"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="555">
+    <Grid Background="White">
+        <TextBlock Foreground="#673ab7" Text="Simmetriyaliq algoritmler" FontSize="32" FontFamily="Comic Sans MS" Margin="57,31,47,312" TextAlignment="Center"/>
+        <TextBlock Text="Shifrlaw usillarinin' simmetriyaliq ha'm assimetriyaliq usillari bar bolip, simmetrik shifrlawda shifrlaw ha'm deshifrlaw ushin bir giltten paydalaniladi." TextWrapping="Wrap" TextAlignment="Center" FontSize="16" FontFamily="Comic Sans MS" Margin="45,106,47,215"/>
+        <Button x:Name="DESButton" Style="{DynamicResource MaterialDesignRaisedButton}"
+                materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                Content="DES" Margin="315,251,72,106" Height="Auto" FontSize="20" Click="DESButton_Click"/>
+        <Button x:Name="AESButton" Style="{DynamicResource MaterialDesignRaisedButton}"
+                materialDesign:ShadowAssist.ShadowDepth="Depth3"
+                Content="AES" Margin="78,251,309,106" Height="Auto" FontSize="20" Click="AESButton_Click"/>
+
+    </Grid>
+</UserControl>

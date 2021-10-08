@@ -1,0 +1,36 @@
+﻿<Window x:Class="CryptographyApp.DiffieHellman"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CryptographyApp"
+        mc:Ignorable="d"
+        Title="DiffieHellman" Height="500" Width="800">
+    <ScrollViewer CanContentScroll="True">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0"  Text="Diffi-Xellman gilt almasiw algoritmi" FontSize="24" FontFamily="Comic Sans MS" Margin="159,10,207,10"/>
+            <Grid Grid.Row="1" Margin="20 10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Text="Diffi-Xellman gilt almasiw algoritmi bul qorg'almag'an kanalda kriptografiyaliq giltlerdi qa'wipsiz almasiw imkaniyatin beriwshi metod esaplanadi. " TextWrapping="Wrap" FontFamily="Comic Sans MS" FontSize="20"/>
+                
+                <Image Grid.Row="1" Source="D:/Project/CryptographyApp/Images/DiffieHellman.png" Height="492" Margin="60,48,86,356" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBox x:Name="pBox" Grid.Row="1" Margin="332,112,333,775" Height="24" Width="70" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"/>
+                <TextBox x:Name="gBox" Grid.Row="1" Margin="332,136,333,747" Height="28" Width="70" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"/>
+                <TextBox x:Name="aBox" Grid.Row="1" Margin="146,195,510,687" Height="29" Width="79" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"/>
+                <TextBox x:Name="bBox" Grid.Row="1" Margin="507,195,149,687" Height="29" Width="79" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"/>
+                <TextBlock x:Name="ABlock" Grid.Row="1" TextWrapping="Wrap" Height="30" Width="100" Margin="117,314,510,566"  TextAlignment="Center"  HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock x:Name="BBlock" Grid.Row="1" TextWrapping="Wrap" Height="30" Width="100" Margin="487,314,140,566"  TextAlignment="Center"  HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock x:Name="KaBlock" Grid.Row="1" TextWrapping="Wrap" Height="28" Width="100" Margin="121,492,514,391"  TextAlignment="Center"  HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock x:Name="KbBlock" Grid.Row="1" TextWrapping="Wrap" Height="28" Width="100" Margin="487,490,140,393"  TextAlignment="Center"  HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Button  x:Name="beginButton" Content="Baslaw" HorizontalAlignment="Center" Margin="315,258,345,621" Grid.Row="1" VerticalAlignment="Center" Width="75" Click="beginButton_Click"/>
+            </Grid>
+        </Grid>
+    </ScrollViewer>
+</Window>

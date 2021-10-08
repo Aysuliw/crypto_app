@@ -1,0 +1,63 @@
+﻿<Window x:Class="CryptographyApp.DES"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:CryptographyApp"
+        WindowStartupLocation="CenterScreen"
+        mc:Ignorable="d"
+        Title="DES" Height="500" Width="800">
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontFamily" Value="Century"/>
+            <Setter Property="Margin" Value="0 7"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+        </Style>
+        <Style TargetType="{x:Type TextBox}" x:Key="defaultTextBox" BasedOn="{StaticResource MaterialDesignOutlinedTextBox}" >
+            <Setter Property="Height" Value="100"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="FontSize" Value="16"/>
+
+        </Style>
+    </Window.Resources>
+    <ScrollViewer CanContentScroll="True">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Margin="30,10">
+                <TextBlock  Text="DES shifrlaw algoritmi" FontSize="36" FontFamily="Comic Sans MS" Margin="175,10,151,10"  TextAlignment="Center"/>
+                <TextBlock Text="   DES(Data Encryption Standard) – bul IBM tárepinen islep shıǵılǵan simmetriyalıq shifrlaw algotirmi bolıp, 1977 jılda AQSH húkimeti tárepinen rásmiy standart túrinde qabıl etilgen.DESta blok kólemi 64 bitti quraydı.Algoritm Feistel tarmaǵına tiykarlanıp,  16 cikl(raund)dan ibarat  hám 64 bit uzınlıqtaǵı giltke iye. Kiriwshi tekst 64 bit uzınlıqqa iye. Shifrlaw processi baslanǵısh(Initial) almastırıw, 16 raund hám aqırǵı(Final) almastırıwdan ibarat."/>
+                <TextBox  x:Name="inputBox"  Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                                    VerticalAlignment="Top"
+                                    Height="100"
+                                    AcceptsReturn="True"
+                                    TextWrapping="Wrap"
+                                    VerticalScrollBarVisibility="Auto"
+                                    Margin="10"
+                                    materialDesign:HintAssist.Hint="Berilgen tekstti kiritin"/>
+                <TextBox  x:Name="keyBox"  Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                                    VerticalAlignment="Top"
+                                    Height="100"
+                                    AcceptsReturn="True"
+                                    TextWrapping="Wrap"
+                                    VerticalScrollBarVisibility="Auto"
+                                    Margin="10"
+                                    materialDesign:HintAssist.Hint="Giltti kiritin"/>
+                <Grid Margin="10">
+                    <Button x:Name="decryptButton" Content="Deshifrlaw" Margin="434,0,132,0" FontSize="18" VerticalAlignment="Center" HorizontalAlignment="Center" Width="200" Click="decryptButton_Click" />
+                    <Button x:Name="encryptButton" Content="Shifrlaw" Margin="90,0,405,0" Click="encryptButton_Click" FontSize="18" Width="200" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+                </Grid>
+            </StackPanel>
+            <StackPanel Grid.Row="1" Margin="30 10" x:Name="stackP"  >
+                
+            </StackPanel>
+
+
+        </Grid>
+    </ScrollViewer>
+</Window>

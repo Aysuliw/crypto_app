@@ -1,0 +1,49 @@
+﻿<Window x:Class="CryptographyApp.ROT13"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:CryptographyApp"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="ROT13" Height="610.936" Width="805.848">
+    <Grid>
+        <ScrollViewer CanContentScroll="True">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="7*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Text="ROT13 shifri" FontSize="32" FontFamily="Comic Sans MS" HorizontalAlignment="Center" Margin="5"/>
+
+                <StackPanel Grid.Row="1" Margin="10 0">
+                    <TextBlock Text="ROT13  Cezar shifrinin' arnawli ko'rinisi  bolip, onda gilt yag'niy jiljitiwlar sani har dayim 13 ke ten' boladi." FontSize="20" TextWrapping="Wrap" Padding="20 0" FontFamily="Comic Sans MS"/>
+                    <TextBox x:Name="textBox1"
+                Margin="20 10"
+                Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                VerticalAlignment="Top"
+                Height="68"
+                AcceptsReturn="True"
+                TextWrapping="Wrap"
+                VerticalScrollBarVisibility="Auto"
+                materialDesign:HintAssist.Hint="Latin alfavitinen ibarat qalegen tekstti kiritin'"/>
+                    <WrapPanel HorizontalAlignment="Center">
+
+                        <Button x:Name="encryptButton" Margin="30 10" Content="Shifrlaw" Height="43" Width="140"  FontSize="20" Click="encryptButton_Click" />
+                        <Button x:Name="decryptButton" Margin="30 10" Content="Deshifrlaw" Height="43" Width="140" FontSize="20" Click="decryptButton_Click" />
+                    </WrapPanel>
+
+                </StackPanel>
+                <StackPanel Grid.Row="2" HorizontalAlignment="Center">
+                    <Image Source="D:/Project/CryptographyApp/Images/ROT13.png" Height="154" Margin="145,0,137,0" HorizontalAlignment="Center" Width="493"/>
+                    <TextBlock Text="Na'tiyje:" Grid.Row="2" FontFamily="Comic Sans MS" FontSize="28"  TextAlignment="Center"/>
+                    <TextBlock x:Name="result" TextWrapping="Wrap" FontSize="24" Grid.Row="2" Margin="110,10,101,0" FontFamily="Comic Sans MS" Height="98" VerticalAlignment="Top" TextAlignment="Center"/>
+                </StackPanel>
+
+
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</Window>

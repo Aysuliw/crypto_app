@@ -1,0 +1,155 @@
+﻿<Window x:Class="CryptographyApp.SHA256"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:CryptographyApp"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="SHA256" Height="700" Width="1200">
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontFamily" Value="Century"/>
+            <Setter Property="Margin" Value="0 7"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+        </Style>
+        <Style TargetType="TextBlock"  x:Key="headingText">
+            <Setter Property="FontSize" Value="26"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontFamily" Value="Comic Sans MS"/>
+            <Setter Property="Margin" Value="10"/>
+
+        </Style>
+        <Style TargetType="{x:Type TextBox}" x:Key="defaultTextBox" BasedOn="{StaticResource MaterialDesignOutlinedTextBox}" >
+            <Setter Property="Height" Value="100"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="FontSize" Value="16"/>
+
+        </Style>
+
+    </Window.Resources>
+    <Grid>
+        <ScrollViewer CanContentScroll="True">
+            <Grid Background="AliceBlue">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="*"/>
+
+
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0" Margin="30 10" >
+                    <TextBlock  Style="{StaticResource headingText}" Text="SHA256 xesh funkciyasi" Foreground="Blue" HorizontalAlignment="Center"/>
+                    <TextBlock  Text="  SHA256 algoritmi 256 bitli xesh ma'nisti payda etedi."   TextWrapping="Wrap" Grid.RowSpan="2"/>
+                    <TextBox  x:Name="inputBox"  Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                                    VerticalAlignment="Top"
+                                    Height="100"
+                                    AcceptsReturn="True"
+                                    TextWrapping="Wrap"
+                                    VerticalScrollBarVisibility="Auto"
+                                    Margin="10"
+                                    materialDesign:HintAssist.Hint="Berilgen tekstti kiritin"/>
+                    <Button x:Name="hashButton" Content="Xeshlew" HorizontalAlignment="Center" Click="hashButton_Click" Height="42" FontSize="24"/>
+                    <TextBlock  Text="Kiritilgen teksttin' ekilik ko'rinisi:"/>
+                    <TextBox TextWrapping="Wrap" x:Name="binaryBox" Style="{StaticResource defaultTextBox}" Height="70px"/>
+                    <WrapPanel >
+                        <TextBlock Text="Tekst uzinlig'i :"  Height="25"/>
+                        <TextBox x:Name="lengthBox" Height="60px" Width="151" FontSize="14" Style="{StaticResource defaultTextBox}"/>
+                    </WrapPanel>
+                    <TextBlock Text="Algoritm bir neshe basqishtan ibarat: &#10;1)En' da'slep teksttin' binar ko'rinisine  bir bit('1') qosamiz. " />
+                    <TextBox TextWrapping="Wrap" x:Name="oneBox" Height="70px" Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+                    <TextBlock Text="Tekst uzinligi 512den 64 bitke kem(512-64=448) bolganga shekem '0' ler qosiladi."/>
+                    <TextBlock x:Name="padding">
+                        Yaǵnıy '1' hám <TextBlock x:Name="ZeroLength" Text="N" Margin="0"/> dana '0'  qosamız. Usı arqalı ulıwma uzınlıq 448 bitke teń boladı.
+                    </TextBlock>
+                    <TextBox TextWrapping="Wrap" x:Name="zeroBox"  Height="143" Style="{StaticResource MaterialDesignOutlinedTextBox}" />
+                    <TextBlock  TextWrapping="Wrap">
+                        2)	Tekst uzınlıǵın qosıw: 64 bit berilgen tekst uzınliǵın qosıw. Berilgen tekst uzınlıǵı b<TextBlock Margin="0" x:Name="textLength"/> bitke teń. Tekst uzınlıǵı 64 bit kóriniste tómendegishe boladı:<LineBreak/>
+                        <TextBlock Margin="0" x:Name="binaryLength"/>
+                    </TextBlock>
+
+                    <TextBlock Text="512 bit uzınlıqqa iye berilgen tekst tómendegi kóriniske keledi." />
+                    <TextBox TextWrapping="Wrap" x:Name="fullBox" Height="141" Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+                    <TextBlock Text="3)	Xesh mánislerdi esaplaw hám olardıń mánisin saqlap turıw ushın  4 buffer jariyalanadı."/>
+                    <TextBlock  TextWrapping="Wrap">
+                        A<Run BaselineAlignment="Subscript" FontSize="12">0</Run>=6A09E667<Run BaselineAlignment="Subscript" FontSize="12">16</Run>=1779033703<Run BaselineAlignment="Subscript" FontSize="12">10</Run>=1101010000010011110011001100111<Run BaselineAlignment="Subscript" FontSize="12">2</Run><LineBreak/>
+                        B<Run BaselineAlignment="Subscript" FontSize="12">0</Run>=BB67AE85<Run BaselineAlignment="Subscript" FontSize="12">16</Run>=3144134277<Run BaselineAlignment="Subscript" FontSize="12">10</Run>=10111011011001111010111010000101<Run BaselineAlignment="Subscript" FontSize="12">2</Run><LineBreak/>
+                        C<Run BaselineAlignment="Subscript" FontSize="12">0</Run>=3C6EF372<Run BaselineAlignment="Subscript" FontSize="12">16</Run>=1013904242<Run BaselineAlignment="Subscript" FontSize="12">10</Run>=111100011011101111001101110010<Run BaselineAlignment="Subscript" FontSize="12">2</Run><LineBreak/>
+                        D<Run BaselineAlignment="Subscript" FontSize="12">0</Run>=A54FF53A<Run BaselineAlignment="Subscript" FontSize="12">16</Run>=2773480762<Run BaselineAlignment="Subscript" FontSize="12">10</Run>=10100101010011111111010100111010<Run BaselineAlignment="Subscript" FontSize="12">2</Run><LineBreak/>
+                        E<Run BaselineAlignment="Subscript" FontSize="12">0</Run>=510E527F<Run BaselineAlignment="Subscript" FontSize="12">16</Run>=1359893119<Run BaselineAlignment="Subscript" FontSize="12">10</Run>=1010001000011100101001001111111<Run BaselineAlignment="Subscript" FontSize="12">2</Run><LineBreak/>
+                        F<Run BaselineAlignment="Subscript" FontSize="12">0</Run>=9B05688C<Run BaselineAlignment="Subscript" FontSize="12">16</Run>=2600822924<Run BaselineAlignment="Subscript" FontSize="12">10</Run>=10011011000001010110100010001100<Run BaselineAlignment="Subscript" FontSize="12">2</Run><LineBreak/>
+                        G<Run BaselineAlignment="Subscript" FontSize="12">0</Run>=1F83D9AB<Run BaselineAlignment="Subscript" FontSize="12">16</Run>=528734635<Run BaselineAlignment="Subscript" FontSize="12">10</Run>=11111100000111101100110101011<Run BaselineAlignment="Subscript" FontSize="12">2</Run><LineBreak/>
+                        H<Run BaselineAlignment="Subscript" FontSize="12">0</Run>=5BE0CD19<Run BaselineAlignment="Subscript" FontSize="12">16</Run>=1541459225<Run BaselineAlignment="Subscript" FontSize="12">10</Run>=1011011111000001100110100011001<Run BaselineAlignment="Subscript" FontSize="12">2</Run><LineBreak/>
+                    </TextBlock>
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock TextWrapping="Wrap" Grid.Row="1"
+                                   Text="K[i] konstanta mánisleri&#x0a; K[0..63] := {&#x0a;
+            0x428A2F98, 0x71374491, 0xB5C0FBCF, 0xE9B5DBA5, 0x3956C25B, 0x59F111F1,&#x0a;
+            0x923F82A4, 0xAB1C5ED5, 0xD807AA98, 0x12835B01, 0x243185BE, 0x550C7DC3,&#x0a;
+            0x72BE5D74, 0x80DEB1FE, 0x9BDC06A7, 0xC19BF174, 0xE49B69C1, 0xEFBE4786,&#x0a;
+            0x0FC19DC6, 0x240CA1CC, 0x2DE92C6F, 0x4A7484AA, 0x5CB0A9DC, 0x76F988DA,&#x0a;
+            0x983E5152, 0xA831C66D, 0xB00327C8, 0xBF597FC7, 0xC6E00BF3, 0xD5A79147,&#x0a;
+            0x06CA6351, 0x14292967, 0x27B70A85, 0x2E1B2138, 0x4D2C6DFC, 0x53380D13,&#x0a;
+            0x650A7354, 0x766A0ABB, 0x81C2C92E, 0x92722C85, 0xA2BFE8A1, 0xA81A664B,&#x0a;
+            0xC24B8B70, 0xC76C51A3, 0xD192E819, 0xD6990624, 0xF40E3585, 0x106AA070,&#x0a;
+            0x19A4C116, 0x1E376C08, 0x2748774C, 0x34B0BCB5, 0x391C0CB3, 0x4ED8AA4A,&#x0a;
+            0x5B9CCA4F, 0x682E6FF3, 0x748F82EE, 0x78A5636F, 0x84C87814, 0x8CC70208,&#x0a;
+            0x90BEFFFA, 0xA4506CEB, 0xBEF9A3F7, 0xC67178F2  }&#x0a;"/>
+
+                    </Grid>
+                    <TextBlock x:Name="roundBlock" Text="1-raund" HorizontalAlignment="Center" FontSize="24" Margin="0"/>
+                    <Grid Margin="20">
+                        <Image Source="D:/Project/CryptographyApp/Images/sha256.png"  VerticalAlignment="Top" HorizontalAlignment="Center" Height="700" Width="1000" Margin="36,0,79,0"/>
+                        <TextBlock x:Name="entryValueA" Margin="56,57,959,0" Text="A0" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Center" TextAlignment="Center" Width="100"/>
+                        <TextBlock x:Name="entryValueB" Margin="159,9,856,0" Text="B0" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Center" TextAlignment="Center" Width="100"/>
+                        <TextBlock x:Name="entryValueC" Margin="262,59,753,0" Text="C0" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Center" TextAlignment="Center" Width="100"/>
+                        <TextBlock x:Name="entryValueD" Margin="367,13,648,0" Text="D0" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Center" TextAlignment="Center" Width="100"/>
+                        <TextBlock x:Name="entryValueE" Margin="471,58,544,0" Text="E0" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Center" TextAlignment="Center" Width="100"/>
+                        <TextBlock x:Name="entryValueF" Margin="573,12,442,0" Text="F0" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Center" TextAlignment="Center" Width="100"/>
+                        <TextBlock x:Name="entryValueG" Margin="673,59,342,0" Text="G0" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Center" TextAlignment="Center" Width="100"/>
+                        <TextBlock x:Name="entryValueH" Margin="775,8,240,0" Text="H0" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Center" TextAlignment="Center" Width="100"/>
+                        <TextBlock x:Name="ChValue" Margin="775,142,220,0" Text=" Ch" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Center" TextAlignment="Center" Width="120" Height="27" TextWrapping="Wrap"/>
+                        <TextBlock x:Name="S1Value" Margin="775,213,220,0" Text=" S1" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Center" TextAlignment="Center" Width="120" Height="27" TextWrapping="Wrap"/>
+                        <TextBlock x:Name="MaValue" Margin="775,314,220,0" Text=" Ma" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Center" TextAlignment="Center" Width="120" Height="27" TextWrapping="Wrap"/>
+                        <TextBlock x:Name="S0Value" Margin="775,386,220,0" Text=" S0" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Center" TextAlignment="Center" Width="120" Height="27" TextWrapping="Wrap"/>
+                        <TextBlock x:Name="WValue" Margin="952,95,63,0" Text="W" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Center" TextAlignment="Center" Width="100"/>
+                        <TextBlock x:Name="kValue" Margin="1038,144,-24,0" Text="K" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Center" TextAlignment="Center" Width="101" Height="25"/>
+
+                        <TextBlock x:Name="leftrotate1" Margin="86,150,529,326" Text="" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Center" TextAlignment="Center" Width="100"/>
+                        <TextBlock x:Name="leftrotate2" Margin="165,221,450,255" Text="" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Center" TextAlignment="Center" Width="100"/>
+
+                        <TextBlock x:Name="finishValueA" Margin="54,565,961,0" Text="A" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Center" TextAlignment="Center" Width="100"/>
+                        <TextBlock x:Name="finishValueB" Margin="159,514,856,0" Text="B" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Center" TextAlignment="Center" Width="100"/>
+                        <TextBlock x:Name="finishValueC" Margin="262,565,753,0" Text="C" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Center" TextAlignment="Center" Width="100"/>
+                        <TextBlock x:Name="finishValueD" Margin="367,518,648,0" Text="D" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Center" TextAlignment="Center" Width="100"/>
+                        <TextBlock x:Name="finishValueE" Margin="471,564,544,0" Text="E" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Center" TextAlignment="Center" Width="100"/>
+                        <TextBlock x:Name="finishValueF" Margin="571,519,444,0" Text="F" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Center" TextAlignment="Center" Width="100"/>
+                        <TextBlock x:Name="finishValueG" Margin="673,564,342,0" Text="G" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Center" TextAlignment="Center" Width="100"/>
+                        <TextBlock x:Name="finishValueH" Margin="775,515,240,0" Text="H" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Center" TextAlignment="Center" Width="100"/>
+                        <StackPanel Margin="300,620,298,10" Orientation="Horizontal" HorizontalAlignment="Center" Width="477" >
+                            <Button Content="Izge qaytiw"  x:Name="backButton" Click="backButton_Click" Margin="20,19" Width="125"/>
+                            <Button Content="Baslaw" x:Name="beginButton" Click="beginButton_Click" Margin="20,19" Width="97" />
+                            <Button Content="Dawam etiw"  x:Name="nextButton" Click="nextButton_Click" Margin="20,19" Width="126"/>
+
+                        </StackPanel>
+                    </Grid>
+
+                    <Button x:Name="finalResultButton" Content="Natiyjeni koriw" Margin="227,0,204,0" Click="finalResultButton_Click" Width="200" Height="40"/>
+                    <TextBlock x:Name="finalResult" TextWrapping="Wrap" Height="200"/>
+                    <TextBlock x:Name="finalHexResult" TextWrapping="Wrap" Height="50" HorizontalAlignment="Center"/>
+                </StackPanel>
+
+
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</Window>
